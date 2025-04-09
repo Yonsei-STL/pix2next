@@ -1,7 +1,7 @@
 # Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation
 
 > **Pix2Next** is a novel image-to-image (I2I) translation framework that generates **Near-Infrared (NIR)** images from RGB inputs.  
-> By integrating **Vision Foundation Models (VFM)** as a feature extractor and applying **cross-attention** within an **encoder-decoder** architecture, Pix2Next delivers **high-quaility**, **high-fidelity** NIR image synthesis.
+> By integrating **Vision Foundation Models (VFM)** as a feature extractor and applying **cross-attention** within an **encoder-decoder** architecture, Pix2Next delivers **high-quality**, **high-fidelity** NIR image synthesis.
 
 <p align="center">
   <img src="assets/detailed_architecture.png" width="1000" alt="Pix2Next Teaser">
