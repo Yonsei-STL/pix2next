@@ -75,17 +75,18 @@ python eval_all.py
 ---
 
 ### Performance 
-####Ranus
+Ranus
 <p align="center">
   <img src="assets/Ranus_qual.PNG" width="700" alt="Ranus_qual">
 </p>
-
-####IDDAW
+weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8wyTgAGjDkg/view?usp=sharing)
+IDDAW
 <p align="center">
   <img src="assets/IDDAW_qual.PNG" width="700" alt="IDDAW_qual">
 </p>
+weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8wyTgAGjDkg/view?usp=sharing)
 ---
-## visualization 
+### visualization 
 
 ### Ranus
 <p align="center">
