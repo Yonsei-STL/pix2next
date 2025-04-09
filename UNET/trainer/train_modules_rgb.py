@@ -108,7 +108,7 @@ def train(config, G, D, optimizer_G, optimizer_D, lr_scheduler_G, lr_scheduler_D
                     loss_G_SSIM = losses.get('loss_G_SSIM', 0)
 
                     loss_D = (loss_D_fake + loss_D_real) * 0.5
-                    loss_G = loss_G_GAN + loss_G_GAN_Feat + loss_G_VGG #+ loss_G_SSIM
+                    loss_G = loss_G_GAN + loss_G_GAN_Feat + loss_G_VGG + loss_G_SSIM
 
                     ### backward pass ###
                     # update generator weights
