@@ -108,6 +108,11 @@ weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8w
   <img src="assets/bdd100k_vis.PNG" width="1000" alt="bdd100k">
 </p>
 
+## References
+
+[RANUS: RGB and NIR Urban Scene Dataset for Deep Scene Parsing](https://ieeexplore.ieee.org/document/8279453/)
+[IDD-AW: A Benchmark for Safe and Robust Segmentation of Drive Scenes in Unstructured Traffic and Adverse Weather](https://iddaw.github.io/)
+[InternImage: Exploring Large-Scale Vision Foundation Models with Deformable Convolutions](https://github.com/OpenGVLab/InternImage)
 
 ## Citation 
 
