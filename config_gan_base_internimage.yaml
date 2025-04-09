@@ -1,0 +1,121 @@
+config_type: 'base'
+##################
+
+data:
+  root: /home/SHB/Mul-Spec/pix2pixHD/datasets/FMB/
+  download: true
+  resize: [256, 256]
+  normalize_mean: [0.5, 0.5, 0.5]
+  normalize_std: [0.5, 0.5, 0.5]
+
+loader:
+  target: ['train', 'test']
+
+  train:
+    epoch: 1000
+    batch_size: 3
+    shuffle: true
+    subset: false
+
+  vali:
+    batch_size: 4
+    subset: 1
+    shuffle: false
+    
+  test:
+    batch_size: 1
+    subset: false
+    shuffle: false
+
+model:
+  unet:
+    # [add|concat]
+    name: 'internimage'
+    skip_connection_type: 'concat'
+
+    condition:
+      image_condition: false
+      contour_condition: false
+      class_condition: false
+      class_condition_type: 'concat' # [add, concat]
+       
+      num_classes: 10
+      d_condition: 1024
+
+    time_embedding:
+      d_time: 128
+
+    # conv2d             - [in_ch, out_ch, kernel_size, stride, padding]
+    # residual           - [in_ch, out_ch]
+    # sd_residual        - [in_ch, out_ch]
+    # self_attention     - [d_embed, num_heads]
+    # cross_attnetion    - [d_embed, num_heads, d_cond]
+    # sd_attention       - [d_embed, num_heads, d_cond]
+    # pre_group          - [in_ch]
+    # upsample_transpose - [in_ch]
+    # upsample           - [in_ch]
+    # downsample         - [in_ch]
+    # downsample_depth   - [in_ch]
+    # swin               - [in_ch, patch_size(list), depths(list), n_heads(list), window_size(list)]
+    # silu               - []
+    # swish              - []
+    # non_local          - [in_ch]
+    num_groups: 32
+    num_condition_groups: 1
+
+    target_ch: 3
+    init_conv: [3, 128, 1, 1, 0]
+    
+
+    encoder_block_types: [
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      'downsample_depth',
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      'downsample_depth',
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      'downsample_depth',
+      ['sd_residual', 'sd_attention', 'sd_residual'],
+    ]
+
+    # skip-connection
+    encoder_block_args: [
+      [[128, 128], [128, 256], [256, 256]],
+      [256],
+      [[256, 256], [256, 512], [512, 512]],
+      [512],
+      [[512, 512], [512, 512], [512, 512]],
+      [512],
+      [[512, 512], [128, 4], [512, 512]],
+    ] 
+
+    bottle_neck_block_types: [
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      ['sd_residual', 'sd_attention', 'sd_residual'],
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+    ]
+
+    bottle_neck_block_args: [ 
+      [[512, 512], [512, 512], [512, 512]],
+      [[512, 512], [128, 4], [512, 512]],
+      [[512, 512], [512, 512], [512, 512]],
+    ]
+
+    decoder_block_types: [ 
+      ['sd_residual', 'sd_attention', 'sd_residual'],
+      'upsample',
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      'upsample',
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+      'upsample',
+      ['sd_residual', 'sd_residual', 'sd_residual'],
+    ]
+
+    decoder_block_args: [
+      [[512, 512], [128, 4], [512, 512]],
+      [512],
+      [[512, 512], [512, 256], [256, 256]],
+      [256],
+      [[256, 256], [256, 256], [256, 256]],
+      [256],
+      [[256, 256], [256, 128], [128, 128]],
+    ]
