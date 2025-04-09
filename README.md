@@ -1,128 +1,104 @@
-config_type: 'base'
-##################
+# Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation
 
-data:
-  root: /home/SHB/Mul-Spec/pix2pixHD/datasets/flir_data/
-  download: true
-  resize: [256, 256]
-  normalize_mean: [0.5, 0.5, 0.5]
-  normalize_std: [0.5, 0.5, 0.5]
+> **Pix2Next** is a novel image-to-image (I2I) translation framework that generates **Near-Infrared (NIR)** images from RGB inputs.  
+> By integrating **Vision Foundation Models (VFM)** as a feature extractor and applying **cross-attention** within an **encoder-decoder** architecture, Pix2Next delivers **high-resolution**, **high-fidelity** NIR image synthesis.
 
-loader:
-  target: ['train', 'test']
+<p align="center">
+  <img src="assets/detailed_architecture.png" width="700" alt="Pix2Next Teaser">
+</p>
 
-  train:
-    epoch: 1000
-    batch_size: 4
-    shuffle: true
-    subset: false
 
-  vali:
-    batch_size: 4
-    subset: 1
-    shuffle: false
-    
-  test:
-    batch_size: 1
-    subset: false 
-    shuffle: false
 
-model:
-  unet:
-    # [add|concat]
-    skip_connection_type: 'concat'
 
-    condition:
-      image_condition: false
-      contour_condition: false
-      class_condition: false
-      class_condition_type: 'concat' # [add, concat]
-       
-      num_classes: 10
-      d_condition: 1024
 
-    time_embedding:
-      d_time: 128
+---
 
-    # conv2d             - [in_ch, out_ch, kernel_size, stride, padding]
-    # residual           - [in_ch, out_ch]
-    # sd_residual        - [in_ch, out_ch]
-    # self_attention     - [d_embed, num_heads]
-    # cross_attnetion    - [d_embed, num_heads, d_cond]
-    # sd_attention       - [d_embed, num_heads, d_cond]
-    # pre_group          - [in_ch]
-    # upsample_transpose - [in_ch]
-    # upsample           - [in_ch]
-    # downsample         - [in_ch]
-    # downsample_depth   - [in_ch]
-    # swin               - [in_ch, patch_size(list), depths(list), n_heads(list), window_size(list)]
-    # vit               - [image_size, patch_size, dim, depths, heads, mlp_dim, channnel]
-    # silu               - []
-    # swish              - []
-    # non_local          - [in_ch]
-    num_groups: 1
-    num_condition_groups: 1
+## Paper
 
-    target_ch: 3
-    init_conv: [3, 128, 1, 1, 0]
+- **Title**: Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation  
+- **Authors**: Youngwan Jin, Incheol Park, Hanbin Song, Hyeongjin Ju, Yagiz Nalcakan, Shiho Kim  
+- **Journal**: *Technologies* (MDPI)  
+- **PDF / DOI**: [https://arxiv.org/abs/2409.16706]  
 
-    swin_block_types: [
-      'VIT',
-    ]
+> **Full Paper (PDF)**: [MDPI_Article_Template__2_.pdf](./MDPI_Article_Template__2_.pdf)
 
-    vit_block_args: [
-      [256,16, 1024, 6, 8, 1024, 128] # B, 1024, 8, 8
-    ]
+---
 
-    encoder_block_types: [
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      'downsample_depth',
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      'downsample_depth',
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      'downsample_depth',
-      ['sd_residual', 'sd_attention', 'sd_residual'],
-    ]
+## Quick start
 
-    # skip-connection
-    encoder_block_args: [
-      [[128, 128], [128, 256], [256, 256]],
-      [256],
-      [[256, 256], [256, 512], [512, 512]],
-      [512],
-      [[512, 512], [512, 512], [512, 512]],
-      [512],
-      [[512, 512], [128,4], [512, 512]],
-    ] 
+### Installation 
+After torch install with appropriate CUDA version. 
+```bash
+cd pix2next/common/ops_dcn3/
+python setup.py build install
+```
+### Datasets
+Dataset download
+[IDD-AW](https://iddaw.github.io/)
+[Ranus](https://www.chrisgchoe.com/)
 
-    bottle_neck_block_types: [
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      ['sd_residual', 'sd_attention', 'sd_residual'],
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-    ]
+Data structure
+```bash
+Pix2Next
+├── datasets
+│   ├── ranus
+│   │   ├── train_A (source: RGB)
+│   │   ├── train_B (target: NIR)
+│   │   ├── test_A  (source: RGB)
+│   │   └── test_B  (target: NIR)
+│   └── idd_aw
+│       ...
+│       
+└── ...
+```
 
-    bottle_neck_block_args: [ 
-      [[512, 512], [512, 512], [512, 512]],
-      [[512, 512], [128, 4], [512, 512]],
-      [[512, 512], [512, 512], [512, 512]],
-    ]
+### Training 
+```bash
+cd ~/pix2next/UNET/trainer/
+python train.py
+```
+---
 
-    decoder_block_types: [ 
-      ['sd_residual', 'sd_attention', 'sd_residual'],
-      'upsample',
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      'upsample',
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-      'upsample',
-      ['sd_residual', 'sd_residual', 'sd_residual'],
-    ]
+### Testing
+```bash 
+cd ~/pix2next/UNET/tester/
+python test_unet.py
+```
+---
 
-    decoder_block_args: [
-      [[512, 512], [128, 4], [512, 512]],
-      [512],
-      [[512, 512], [512, 256], [256, 256]],
-      [256],
-      [[256, 256], [256, 256], [256, 256]],
-      [256],
-      [[256, 256], [256, 128], [128, 128]],
-    ]
+### Evaluation 
+copy from test image folder, paste evaluation folder 
+```bash
+cd ~/pix2next/UNET/evaluation/
+python eval_all.py
+```
+---
+
+### Performance 
+####Ranus
+<p align="center">
+  <img src="assets/Ranus_qual.PNG" width="700" alt="Ranus_qual">
+</p>
+
+####IDDAW
+<p align="center">
+  <img src="assets/IDDAW_qual.PNG" width="700" alt="IDDAW_qual">
+</p>
+---
+## visualization 
+
+### Ranus
+<p align="center">
+  <img src="assets/Ranus_vis.PNG" width="700" alt="Ranus">
+</p>
+
+### IDDAW
+<p align="center">
+  <img src="assets/IDDAW_vis.PNG" width="700" alt="IDDAW">
+</p>
+
+### BDD100K zeroshot translation
+<p align="center">
+  <img src="assets/bdd100k_vis.PNG" width="700" alt="bdd100k">
+</p>
+
