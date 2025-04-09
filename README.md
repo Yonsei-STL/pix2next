@@ -108,3 +108,15 @@ weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8w
   <img src="assets/bdd100k_vis.PNG" width="1000" alt="bdd100k">
 </p>
 
+
+## Citation 
+
+If this work is helpful for your research, please consider citing the following BibTeX entry.
+```bibtex
+@article{jin2024pix2next,
+  title={Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation},
+  author={Jin, Youngwan and Park, Incheol and Song, Hanbin and Ju, Hyeongjin and Nalcakan, Yagiz and Kim, Shiho},
+  journal={arXiv preprint arXiv:2409.16706},
+  year={2024}
+}
+```
