@@ -1,2 +1,0 @@
-train
-python UNET/trainer/train.py 
