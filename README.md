@@ -80,7 +80,7 @@ python eval_all.py
   <img src="assets/Ranus_qual.PNG" width="700" alt="Ranus_qual">
 </p>
 weight_file: [Ranus_pretrain](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8wyTgAGjDkg/view?usp=sharing/)
-
+[IDD-AW](https://iddaw.github.io/)
 ### IDDAW
 <p align="center">
   <img src="assets/IDDAW_qual.PNG" width="700" alt="IDDAW_qual">
