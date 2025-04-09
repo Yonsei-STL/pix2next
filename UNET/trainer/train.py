@@ -21,7 +21,7 @@ def weights_init(m):
     if classname.find('Conv') != -1:
         nn.init.normal_(m.weight.data, 0.0, 0.02)
 
-config_path = '../../config_gan_base_internimage_pyramid.yaml'
+config_path = '../../config_gan_base_internimage.yaml'
 config = load_config(config_path)
 epochs = config['loader']['train']['epoch']
 loaders = build_loader(config)
