@@ -27,7 +27,7 @@
 ## Quick start
 
 ### Installation 
-After torch install with appropriate CUDA version. 
+First of all install torch with the appropriate CUDA version. 
 ```bash
 cd pix2next/common/ops_dcn3/
 python setup.py build install
