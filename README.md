@@ -4,7 +4,7 @@
 > By integrating **Vision Foundation Models (VFM)** as a feature extractor and applying **cross-attention** within an **encoder-decoder** architecture, Pix2Next delivers **high-resolution**, **high-fidelity** NIR image synthesis.
 
 <p align="center">
-  <img src="assets/detailed_architecture.png" width="700" alt="Pix2Next Teaser">
+  <img src="assets/detailed_architecture.png" width="1000" alt="Pix2Next Teaser">
 </p>
 
 
@@ -95,16 +95,16 @@ weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8w
 
 ### Ranus
 <p align="center">
-  <img src="assets/Ranus_vis.PNG" width="700" alt="Ranus">
+  <img src="assets/Ranus_vis.PNG" width="1000" alt="Ranus">
 </p>
 
 ### IDDAW
 <p align="center">
-  <img src="assets/IDDAW_vis.PNG" width="700" alt="IDDAW">
+  <img src="assets/IDDAW_vis.PNG" width="1000" alt="IDDAW">
 </p>
 
 ### BDD100K zeroshot translation
 <p align="center">
-  <img src="assets/bdd100k_vis.PNG" width="700" alt="bdd100k">
+  <img src="assets/bdd100k_vis.PNG" width="1000" alt="bdd100k">
 </p>
 
