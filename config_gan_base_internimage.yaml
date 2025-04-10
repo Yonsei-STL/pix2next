@@ -2,7 +2,7 @@ config_type: 'base'
 ##################
 
 data:
-  root: /home/SHB/Mul-Spec/pix2pixHD/datasets/FMB/
+  root: /home/SHB/Mul-Spec/pix2pixHD/datasets/Ranus/
   download: true
   resize: [256, 256]
   normalize_mean: [0.5, 0.5, 0.5]
