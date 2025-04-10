@@ -16,8 +16,7 @@
 ## Paper
 
 - **Title**: Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation  
-- **Authors**: Youngwan Jin, Incheol Park, Hanbin Song, Hyeongjin Ju, Yagiz Nalcakan, Shiho Kim  
-- **Journal**: *Technologies* (MDPI)  
+- **Authors**: Youngwan Jin, Incheol Park, Hanbin Song, Hyeongjin Ju, Yagiz Nalcakan, Shiho Kim   
 - **Paper**: [https://arxiv.org/abs/2409.16706]  
 
 
