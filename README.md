@@ -66,7 +66,7 @@ python test_unet.py
 ---
 
 ### Evaluation 
-copy from test image folder, paste evaluation folder 
+copy from test image folder, paste 새 evaluation folder 
 ```bash
 cd ~/pix2next/UNET/evaluation/
 python eval_all.py
