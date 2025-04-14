@@ -119,10 +119,17 @@ weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8w
 
 If this work is helpful for your research, please consider citing the following BibTeX entry.
 ```bibtex
-@article{jin2024pix2next,
-  title={Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation},
-  author={Jin, Youngwan and Park, Incheol and Song, Hanbin and Ju, Hyeongjin and Nalcakan, Yagiz and Kim, Shiho},
-  journal={arXiv preprint arXiv:2409.16706},
-  year={2024}
+
+@article{technologies13040154,
+AUTHOR = {Jin, Youngwan and Park, Incheol and Song, Hanbin and Ju, Hyeongjin and Nalcakan, Yagiz and Kim, Shiho},
+TITLE = {Pix2Next: Leveraging Vision Foundation Models for RGB to NIR Image Translation},
+JOURNAL = {Technologies},
+VOLUME = {13},
+YEAR = {2025},
+NUMBER = {4},
+ARTICLE-NUMBER = {154},
+URL = {https://www.mdpi.com/2227-7080/13/4/154},
+ISSN = {2227-7080},
+DOI = {10.3390/technologies13040154}
 }
 ```
