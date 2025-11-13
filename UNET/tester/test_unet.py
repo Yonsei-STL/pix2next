@@ -13,7 +13,7 @@ from UNET.models.UNET import *
 from UNET.tester.unet_test_modules_rgb import *
 from accelerate import Accelerator, DistributedDataParallelKwargs
 
-config_path = '../../config_gan_base_internimage_pyramid.yaml'
+config_path = '../../config_gan_base_internimage.yaml'
 config = load_config(config_path)
 loaders = build_loader(config)
 print('test_loader len:', len(loaders['test']))
