@@ -79,7 +79,7 @@ python eval_all.py
   <img src="assets/Ranus_qual.PNG" width="700" alt="Ranus_qual">
 </p>
 
-weight_file: [download](https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8wyTgAGjDkg/view?usp=sharing/)
+weight_file: [download](https://drive.google.com/file/d/1T2LGaa9DjLK69_KJOQlv0BcZaKq1uAQv/view?usp=drive_link)
 
 ### IDDAW
 <p align="center">
