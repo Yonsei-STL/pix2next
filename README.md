@@ -79,15 +79,14 @@ python eval_all.py
   <img src="assets/Ranus_qual.PNG" width="700" alt="Ranus_qual">
 </p>
 
-weight_file: [download]([https://drive.google.com/file/d/1T2LGaa9DjLK69_KJOQlv0BcZaKq1uAQv/view?usp=drive_link](https://drive.google.com/file/d/1iEPp5qVnocOI-cB6KBJhxNPvAEvq2d8C/view?usp=sharing))
+weight_file: [download](https://drive.google.com/file/d/1iEPp5qVnocOI-cB6KBJhxNPvAEvq2d8C/view?usp=sharing)
 
 ### IDDAW
 <p align="center">
   <img src="assets/IDDAW_qual.PNG" width="700" alt="IDDAW_qual">
 </p>
 
-weight_file: [download]([https://drive.google.com/file/d/1X9p3ht9-jhYB52R9_g3Ke8wyTgAGjDkg/view?usp=sharing/](https://drive.google.com/file/d/1TwvTzcG3JZFVj2UBDgBJ-QyR86l43Qku/view?usp=sharing))
-
+weight_file: [download](https://drive.google.com/file/d/1TwvTzcG3JZFVj2UBDgBJ-QyR86l43Qku/view?usp=sharing)
 ---
 
 ## visualization 
